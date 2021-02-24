@@ -75,19 +75,20 @@ def create_order(request, product):
     """Create order
     """
     try:
+        product_qty = int(request.POST.get('product_qty'))
         Order.objects.create(
             order_id=str(uuid.uuid4()),
             product_id=product.product_id,
-            qty=request.POST.get('product_qty'),
-            price=product.price,
+            qty=product_qty,
+            price=product.price*product_qty,
             shop_id=product.shop_id.shop_id,
             customer_id=request.POST.get('customer_id')
         )
 
         # if order success, should update product qty
         updated_product = Product.objects.get(product_id=product.product_id)
-        updated_qty = updated_product.stock_pcs - \
-            int(request.POST.get('product_qty'))
+        updated_qty = updated_product.stock_pcs - product_qty
+
         Product.objects.filter(product_id=product.product_id).update(
             stock_pcs=updated_qty)
 
