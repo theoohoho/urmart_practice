@@ -32,7 +32,7 @@ def verify_product_qty(func):
     """Verify product id and qty have enough qty to support action
     """
     def wrapper(request, *args, **kwargs):
-        product_qty = request.POST.get('product_product_')
+        product_qty = request.POST.get('product_qty')
         product = Product.objects.get(
             product_id=request.POST.get('product_id'))
         if int(product_qty) > product.stock_pcs:
