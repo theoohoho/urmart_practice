@@ -16,6 +16,9 @@
     python manage.py runserver
 
 
+access http://localhost:8000/dashboard
+
+
 ## Test data
 
         {
@@ -32,3 +35,10 @@
             "customer_name": "shirley",
             "vip"": false
         }
+
+## Docker execution
+
+        docker build . -t <image_name>
+        docker run -p 8000:8000 -d <image_name>
+    
+access http://localhost:8000/dashboard
