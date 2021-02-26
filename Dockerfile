@@ -9,6 +9,8 @@ WORKDIR /urmart
 RUN pip install -r requirements.txt
 RUN python manage.py migrate
 RUN python manage.py loaddata dump.json
+RUN . /urmart/setup.sh
+RUN python /urmart/schedule_worker/main.py
 
 EXPOSE 8000
 
