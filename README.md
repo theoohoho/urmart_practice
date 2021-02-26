@@ -13,6 +13,7 @@
 
 ## Start
 
+    source setup.sh
     python manage.py runserver
 
 
