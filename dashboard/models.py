@@ -30,3 +30,13 @@ class Order(models.Model):
     price = models.IntegerField(default=0, null=False)
     shop_id = models.CharField(max_length=10)
     customer_id = models.CharField(max_length=50)
+
+
+class Analytic(models.Model):
+    id = models.IntegerField(primary_key=True)
+    shop_id = models.CharField(max_length=10)
+    total_sales_amount = models.IntegerField(default=0, null=False)
+    total_sales_products = models.IntegerField(default=0, null=False)
+    total_orders = models.IntegerField(default=0, null=False)
+    batch = models.IntegerField(default=0, null=False)
+    timestamp = models.DateTimeField(auto_now=True)
